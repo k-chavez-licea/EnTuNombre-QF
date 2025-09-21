@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>En Tu Nombre</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #0a1929 0%, #1e3a5f 40%, #4a90e2 100%);
+            background-attachment: fixed;
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        /* Animated background particles */
+        body::before {
+            content: '';
+            position: fixed;
+            width: 200%;
+            height: 200%;
+            top: -50%;
+            left: -50%;
+            background-image: 
+                radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px),
+                radial-gradient(circle, rgba(255,255,255,0.05) 2px, transparent 2px);
+            background-size: 50px 50px, 100px 100px;
+            animation: backgroundMove 60s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes backgroundMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .container {
+            text-align: center;
+            z-index: 1;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            letter-spacing: -2px;
+            color: white;
+            margin-bottom: 60px;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            position: relative;
+        }
+
+        /* Subtle underline accent */
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: rgba(255,255,255,0.6);
+            border-radius: 2px;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            position: relative;
+            padding: 18px 50px;
+            font-size: 1.1rem;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            color: white;
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            text-decoration: none;
+            display: inline-block;
+            overflow: hidden;
+            min-width: 200px;
+        }
+
+        .button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(255,255,255,0.2), transparent);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+            background: rgba(255,255,255,0.25);
+            border-color: rgba(255,255,255,0.5);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+
+        .button:hover::before {
+            opacity: 1;
+        }
+
+        .button:active {
+            transform: translateY(0);
+            transition: transform 0.1s;
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+                margin-bottom: 50px;
+            }
+            
+            .button-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .button {
+                width: 100%;
+                min-width: 250px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .button {
+                padding: 16px 40px;
+                font-size: 1rem;
+            }
+        }
+
+        /* Add smooth hover effect for touch devices */
+        @media (hover: none) {
+            .button:active {
+                background: rgba(255,255,255,0.3);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>En Tu Nombre</h1>
+        <div class="button-container">
+            <a href="bible.html" class="button">Bible / Biblia</a>
+            <a href="songs.html" class="button">Cantos / Songs</a>
+        </div>
+    </div>
+</body>
+</html>
